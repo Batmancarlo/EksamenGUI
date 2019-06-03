@@ -1,0 +1,167 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<br/>
+
+
+<div id="vueApp" class="transparent">
+
+    <div>
+        <h1 class="headline">Welcome to Smart City Web</h1>
+    </div>
+
+    @using Microsoft.AspNetCore.Identity
+
+    @inject SignInManager<IdentityUser> SignInManager
+    @inject UserManager<IdentityUser> UserManager
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <div class="flexboxclass">
+            <a class="createbutton" asp-action="Create" asp-controller="Locations">Create New location</a> <a class="createbutton" asp-action="Create" asp-controller="Sensors">Create new sensor</a> <a class="createbutton" asp-action="Create" asp-controller="Trees">Create new tree group</a>
+        </div>
+
+
+        <div class="flexboxclass">
+            <input class="searchbox" type="text" v-model="searchbox" placeholder="Type in name to search for" v-on:change="searchLocations()" />
+        </div>
+
+        <h3 class="h3class2">Locations</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Location ID
+                    </th>
+                    <th>
+                        Location Name
+                    </th>
+                    <th>
+                        Road Name
+                    </th>
+                    <th>
+                        Road Number
+                    </th>
+                    <th>
+                        Zip Code
+                    </th>
+                    <th>
+                        City
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr v-for="item in searchlocations">
+                    <td>
+                        {{item.locationID}}
+                    </td>
+                    <td>
+                        {{item.name}}
+                    </td>
+                    <td>
+                        {{item.roadName}}
+                    </td>
+                    <td>
+                        {{item.roadNumber}}
+                    </td>
+                    <td>
+                        {{item.zipCode}}
+                    </td>
+                    <td>
+                        {{item.city}}
+                    </td>
+                    <td>
+                        <button v-on:click="showSensorsfunction(item.locationID)">View data</button>
+                        <button v-on:click="deletelocation(item.locationID)">Delete location</button>
+                        
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <h3 class="h3class2" v-if="showsensors">Sensors</h3>
+
+        <table class="table" v-if="showsensors">
+            <thead>
+            <tr>
+                <th>
+                    Hexadecimal ID
+                </th>
+                <th>
+                    Tree Sort
+                </th>
+                <th>
+                    GPS Langitude
+                </th>
+                <th>
+                    GPS Longitude
+                </th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr v-for="sensor in specificSensors">
+                <td>
+                    {{sensor.hexaDecimalID}}
+                </td>
+                <td>
+                    {{sensor.treeSort}}
+                </td>
+                <td>
+                    {{sensor.gpsLan}}
+                </td>
+                <td>
+                    {{sensor.gpsLon}}
+                </td>
+                <td>
+                    <button v-on:click="deleteSensor(sensor.sensorID)">Delete sensor</button>
+                </td>
+
+            </tr>
+
+            </tbody>
+        </table>
+
+        <h3 class="h3class2" v-if="showsensors">Trees</h3>
+        <table class="table" v-if="showTrees">
+            <thead>
+                <tr>
+                    <th>
+                        Tree sort
+                    </th>
+                    <th>
+                        Number of trees
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr v-for="tree in specificTrees">
+                    <td>
+                        {{tree.treeSort}}
+                    </td>
+                    <td>
+                        {{tree.numberOfTrees}}
+                    </td>
+                    <td>
+                        <button v-on:click="deleteTree(tree.treeID)">Delete trees</button>
+                    </td>
+
+                </tr>
+
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h3 class="h3class"> Please sign in to use the Smart City Web</h3>
+    }
+</div>
+@section Scripts {
+    <script src="~/js/location-index-vue.js" asp-append-version="true"></script>
+}

@@ -1,0 +1,48 @@
+﻿@model SmartCityWeb.Models.Sensor
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sensor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HexaDecimalID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HexaDecimalID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TreeSort)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TreeSort)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GPSLon)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GPSLon)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GPSLan)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GPSLan)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Location.LocationID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.SensorID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,73 @@
+﻿<Window x:Class="SmartCityWPF.LokationDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SmartCityWPF"
+        mc:Ignorable="d"
+        Background="{DynamicResource ResourceKey=BackgroundBrush}"
+        Title="LokationDetailsWindow" Height="600" Width="400">
+    <Grid>
+        <StackPanel>
+            <TextBlock TextAlignment="Center"  FontSize="20">Lokations Detaljer</TextBlock>
+
+         <Label Style="{StaticResource ResourceKey=LabelStyle}">LokationsID:</Label>
+         <TextBox  Name="ID" Style="{StaticResource ResourceKey=InputStyle}" IsReadOnly="True">
+             <Binding Path="CurrentID" UpdateSourceTrigger="PropertyChanged"></Binding>
+         </TextBox>
+
+         <Label Style="{StaticResource ResourceKey=LabelStyle}">Lokationsnavn:</Label>
+        <TextBox  Name="Lokation" Style="{StaticResource ResourceKey=InputStyle}">
+            <Binding Path="CurrentNavn" UpdateSourceTrigger="PropertyChanged"></Binding>
+        </TextBox>
+
+        <Label Style="{StaticResource ResourceKey=LabelStyle}">Vej:</Label>
+        <TextBox  Name="Vej" Style="{StaticResource ResourceKey=InputStyle}">
+            <Binding Path="CurrentVej" UpdateSourceTrigger="PropertyChanged"></Binding>
+        </TextBox>
+
+        <Label Style="{StaticResource ResourceKey=LabelStyle}">Vejnummer:</Label>
+        <TextBox  Name="VejNummer" Style="{StaticResource ResourceKey=InputStyle}">
+            <Binding Path="CurrentVejNummer" UpdateSourceTrigger="PropertyChanged"></Binding>
+        </TextBox>
+
+        <Label Style="{StaticResource ResourceKey=LabelStyle}">Postnummer:</Label>
+        <TextBox  Name="PostNummer" Style="{StaticResource ResourceKey=InputStyle}">
+            <Binding Path="CurrentPostNummer" UpdateSourceTrigger="PropertyChanged"></Binding>
+        </TextBox>
+
+        <Label Style="{StaticResource ResourceKey=LabelStyle}">By:</Label>
+        <TextBox  Name="By" Style="{StaticResource ResourceKey=InputStyle}">
+            <Binding Path="CurrentBy" UpdateSourceTrigger="PropertyChanged"></Binding>
+        </TextBox>
+
+        <Label Style="{StaticResource ResourceKey=LabelStyle}">Måletræer:</Label>
+            <DataGrid MinHeight="50" MaxHeight="300" Margin="10,10,10,10" IsReadOnly="True" ItemsSource="{Binding Path=CurrentLokationsMaaletraer}" SelectedIndex="{Binding Path=CurrentIndex}" CanUserDeleteRows="True" VerticalScrollBarVisibility="Auto"></DataGrid>
+           <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+               <StackPanel HorizontalAlignment="Center">
+               <Label VerticalAlignment="Center" Style="{StaticResource ResourceKey=LabelStyle}">Tilføj nyt måletræ:</Label>
+            <Button ToolTip="Tilføj nye måletræer" Margin="0,10,10,10" Height="30" Width="80" Command="{Binding Path=TilfoejMaaletrae}">
+                <Grid>
+                    <Line HorizontalAlignment="Center" VerticalAlignment="Center"
+                          X1="0" X2="20" Y1="3" Y2="3" Stroke="Black" StrokeThickness="5"></Line>
+                    <Line HorizontalAlignment="Center" VerticalAlignment="Center"
+                          X1="3" X2="3" Y1="0" Y2="20" Stroke="Black" StrokeThickness="5"></Line>
+                </Grid>
+             </Button>
+               </StackPanel>
+               <StackPanel>
+                    <Label VerticalAlignment="Center" Style="{StaticResource ResourceKey=LabelStyle}">Slet lokation:</Label>
+            <Button ToolTip="Slet markeret lokation" Margin="0,10,10,10" Height="30" Width="80" Command="{Binding Path=SletLokation}">
+                <Grid>
+                    <Line HorizontalAlignment="Center" VerticalAlignment="Center"
+                          X1="0" X2="20" Y1="0" Y2="20" Stroke="Red" StrokeThickness="5"></Line>
+                    <Line HorizontalAlignment="Center" VerticalAlignment="Center"
+                          X1="20" X2="0" Y1="0" Y2="20" Stroke="Red" StrokeThickness="5"></Line>
+                </Grid>
+            </Button>
+               </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>
