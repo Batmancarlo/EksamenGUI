@@ -42,7 +42,12 @@
         </TextBox>
 
         <Label Style="{StaticResource ResourceKey=LabelStyle}">Måletræer:</Label>
-            <DataGrid MinHeight="50" MaxHeight="300" Margin="10,10,10,10" IsReadOnly="True" ItemsSource="{Binding Path=CurrentLokationsMaaletraer}" SelectedIndex="{Binding Path=CurrentIndex}" CanUserDeleteRows="True" VerticalScrollBarVisibility="Auto"></DataGrid>
+            <DataGrid MinHeight="50" MaxHeight="300" Margin="10,10,10,10" IsReadOnly="True" ItemsSource="{Binding Path=CurrentLokationsMaaletraer}" SelectedIndex="{Binding Path=CurrentIndex}" AutoGenerateColumns="False" VerticalScrollBarVisibility="Auto">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Træart:" Binding="{Binding TraeArt}" Width="*"/>
+                    <DataGridTextColumn Header="Antal:" Binding="{Binding AntalTraer}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                <StackPanel HorizontalAlignment="Center">
                <Label VerticalAlignment="Center" Style="{StaticResource ResourceKey=LabelStyle}">Tilføj nyt måletræ:</Label>

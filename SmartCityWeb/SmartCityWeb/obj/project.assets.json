@@ -12538,11 +12538,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\SmartCityWeb\\SmartCityWeb\\SmartCityWeb.csproj",
+      "projectUniqueName": "C:\\EksamenGUI\\SmartCityWeb\\SmartCityWeb\\SmartCityWeb.csproj",
       "projectName": "SmartCityWeb",
-      "projectPath": "C:\\SmartCityWeb\\SmartCityWeb\\SmartCityWeb.csproj",
+      "projectPath": "C:\\EksamenGUI\\SmartCityWeb\\SmartCityWeb\\SmartCityWeb.csproj",
       "packagesPath": "C:\\Users\\midtg\\.nuget\\packages\\",
-      "outputPath": "C:\\SmartCityWeb\\SmartCityWeb\\obj\\",
+      "outputPath": "C:\\EksamenGUI\\SmartCityWeb\\SmartCityWeb\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

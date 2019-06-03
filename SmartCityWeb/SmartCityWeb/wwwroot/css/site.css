@@ -69,6 +69,7 @@ body {
     min-width: 90%;
     height: 80vh;
     overflow: auto;
+    padding: 15px;
 }
 
 .htmlclass {
